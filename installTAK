@@ -11,7 +11,7 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 BASEDIR=$(dirname "$(readlink -f "$0")")
 curuser=$(printenv SUDO_USER)
-homeDir=$(cat /etc/passwd | awk -F':' '/'"$curuser"'/ { print $6 }' | head -n 1)
+homeDir=$(find / -name Installed_by_FISSURE -type d 2> /dev/null)
 distro=$(awk -F'=' '/^ID=/ { print tolower($2) }' /etc/*-release | tr -d '"')
 distro_ver=$(awk -F'=' '/^VERSION_ID=/ { print tolower($2) }' /etc/*-release | tr -d '"')
 backTitle="TAK Server Setup Wizard - Version: $sVER"
